@@ -1,0 +1,444 @@
+#book {
+  width:60vw; /* This means it takes up 60% of the page */
+  height:80vh;
+  position:absolute;
+  left:25vw;
+  top:10vh;
+  perspective:75vw;
+}
+
+#book:before {
+  width:1%;
+  height:100%;
+  background:#280303;
+  content:'';
+  position:absolute;
+  left:49%;
+  top:0;
+  box-shadow:0px 10px 10px rgba(0,0,0,.75);
+  outline:4px solid rgb(0, 0, 0);
+}
+
+.page {
+  width:50%;
+  height:100%;
+  background:radial-gradient(circle at 0% 100%, #777, #ddd 70%);
+  outline:4px solid rgb(0, 0, 0);
+  box-shadow:5px 10px 10px rgba(0,0,0,.15);
+  position:absolute;
+  left:50%;
+  top:0;
+  transition:z-index .01s linear 1s, transform 2s linear;
+  transform-origin:0% 50%;
+  z-index:5;
+  cursor:pointer;
+      
+  font-family:"Truculenta", sans-serif;
+  text-align:center;
+  line-height:50vh;
+}
+
+/* #page5 {
+  transform-origin:-1% 50% !important;
+} */
+
+.front, .back {
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+    
+  font-family:"Truculenta", sans-serif;
+  font-weight: 800;
+  text-align:center;
+  line-height:100vh;
+  
+  opacity:0;
+  transition:opacity .1s linear 1s;
+}
+.front {
+  opacity:1;
+}
+.back {
+  transform:scaleX(-1);
+}
+
+input {
+  visibility:hidden;
+}
+
+label {
+  width:100%;
+  height:100%;
+  z-index:99;
+  position:absolute;
+  left:0;
+  top:0;
+  margin:0;
+  padding:0;
+/*   pointer-events:none; */
+/*   visibility:hidden; */
+/*   background:red; */
+}
+
+input:checked + .page {
+  transform:rotateY(-180deg); 
+}
+
+input:checked + .page .front {
+  opacity:0;  
+}
+input:checked + .page .back {
+  opacity:1;  
+}
+
+#five:checked + .page {
+  z-index:5;
+}
+#four:checked + .page {
+  z-index:4;
+}
+#three:checked + .page {
+  z-index:3;
+}
+#two:checked + .page {
+  z-index:2;
+}
+#one:checked + .page {
+  z-index:1;
+}
+
+body {
+  width:100vw;
+  height:100vh; /* Background Muster -> auf 100 setzen für ohne das Muster */
+  overflow:hidden;
+  background-image:linear-gradient(-45deg, #f9974c, #540410);
+  margin: 0;
+  font-family: "Truculenta", sans-serif;
+}
+
+/* interior pages styles */
+#page1 .front {
+  font-size:10vh;
+  letter-spacing:6vh;
+  line-height:30vh;
+  text-align:center;
+  background:radial-gradient(circle at 50% 55%, #f1a957 70%, #540410 40%);
+  color:rgb(246, 128, 55);
+  animation:cover 5s linear infinite;
+}
+@keyframes cover {
+  60% { color:rgb(248, 240, 240) }
+  /* 40% { color:rgb(240, 62, 193) } */
+  40% { color:#610d1b }
+  /* 80% { color:rgb(217, 16, 16) } */
+}
+
+#page1 .front h6 {
+  margin-left: 50px; /* Abstand zum Buch -> macht den text in die Mitte */
+  font-weight:900;
+}
+
+@media screen and (max-width: 800px) {
+  #page1 .front h6 {
+    display: none; /* Verstecke den Teil mit NIKA auf kleineren Bildschirmen */
+  }
+}
+
+#desert {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rundet Ecken ab */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#fox {
+  width: 20%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#page1 .back {
+  font-size:30vh;
+  font-family:"Truculenta", sans-serif;
+  font-weight:200;
+  color:white;
+  text-shadow:-5px 0px rgb(247, 171, 121), 10px 0px rgb(236, 93, 93);
+  background:#222;
+  animation:a 4s linear infinite;
+}
+@keyframes a {
+  45% { color:white; }
+  50% { color:#222; }
+  55% { color:rgb(231, 215, 169); }
+}
+
+#page2 .front {
+  font-size:30vh;
+  font-family:"Truculenta", sans-serif;
+  font-weight:300;
+  background: rgb(241, 115, 12);
+animation:L 8s linear infinite;
+}
+@keyframes L {
+  50% { color:rgb(235, 58, 58); background:white; }
+}
+
+#page2 .back {
+  font-size:30vh;
+  font-family:"Truculenta", sans-serif;
+  font-weight:100;
+  text-shadow:5px 5px 0px white, 71px px 0px;
+  background:rgb(255, 255, 255);
+  color:#610d1b;
+  animation:p 6s linear infinite;
+}
+
+@keyframes p {
+  50% { text-shadow:13px 13px 0px white, 16px 16px 0px; } 
+}
+
+#page3 .front {
+  background:#222;
+  color:lime;
+  font-size:30vh;
+  font-family:"Truculenta", sans-serif;
+  font-weight:900;
+  overflow:hidden;
+}
+#page3 .front:before {
+  content:'';
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  background:radial-gradient(circle, #222 40%, transparent 40%);
+  background-size:.5vh .5vh;
+  background-position:-.5vh;
+  animation:h 15s linear infinite;
+}
+@keyframes h {
+  100% { background-position:.5vh 0%; }
+}
+#page3 .front:after {
+  content:'I';
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:-1px;
+  left:-10px;
+  color:#222;
+  text-shadow:-2px 0px lime, -2px -2px lime, -2px 2px lime;
+}
+
+#page3 .back {
+  background:#222;
+  color:rgb(247, 181, 143);
+  font-size:30vh;
+  font-weight:800;
+  font-family:"Truculenta", sans-serif;
+  text-shadow:5px 0px rgba(255, 0, 0, 0.5), 10px 0px rgba(255,0,0,.4), 15px 0px rgba(255,0,0,.3), 20px 0px rgba(255,0,0,.2), 25px 0px rgba(255,0,0,.1);
+  overflow:hidden;
+}
+
+#page3 .back:before {
+  content:'N';
+  width:100%;
+  height:100%;
+  text-align:center;
+  line-height:16vh;
+  position:absolute;
+  left:0;
+  top:0;
+  transform:scaleY(-1); /* Spiegelt das N */
+  opacity:.25;
+  animation:aa 1s linear infinite;
+}
+@keyframes aa {
+  50% { left:10px } 
+}
+#page3 .back:after {
+  content:'';
+  width:100%;
+  height:20vh;
+  text-align:center;
+  position:absolute;
+  left:0;
+  bottom:-2px;
+  background:linear-gradient(to top, #222 50%, transparent);
+}
+
+#page4 {
+  overflow:hidden;
+  background:white;
+  
+}
+#page4 .front {
+  width:20%;
+  height:20vh;
+  background:gold;
+  position:absolute;
+  top:40vh;
+  left:40%;
+  color:transparent;
+  transform:skewY(-10deg) skewX(-10deg); /* Tilts the element, sonst wäre es gerade */
+  mix-blend-mode:multiply;
+  animation:b 10s linear infinite;
+}
+@keyframes b {
+  50% { filter:hue-rotate(360deg); }
+}
+
+#page4 .back {
+  height:calc(100% + 10px);
+  background: linear-gradient(#ffffff 50%, rgba(255,255,255,0) 0) 0 0,
+radial-gradient(circle closest-side, #FFFFFF 53%, rgba(255,255,255,0) 0) 0 0,
+radial-gradient(circle closest-side, #FFFFFF 50%, rgba(255,255,255,0) 0) 55px 0 #eeaf3b;
+background-size: 110px 50vh;
+background-repeat: repeat-x;
+  color:white;
+  font-size:30vh;
+  font-weight:200;
+  font-family:"Truculenta", sans-serif;  
+  text-shadow:-1px -1px #eeaf3b, 1px -1px #eeaf3b, 1px 1px #eeaf3b, -1px 1px #eeaf3b;
+  animation:bob 5s linear infinite;
+}
+
+/* Animation der Wellenbewegung */
+@keyframes bob {
+  25% { top:-10px }
+  50% { top:0px; }
+  75% { top:-10px; }
+}
+
+#page5 .front {
+  color:rgb(239, 91, 58);
+  font-size:30vh;
+  font-weight:200;
+  font-family:"Truculenta", sans-serif;
+  background:hsl(0, 0%, 13%); /* Hue, Saturation, Lightness */
+  text-shadow:15px 15px #5b0707;
+  animation:slide 10s linear infinite;
+  }
+
+@keyframes slide {
+  25% { text-shadow:-15px 15px #5b0707; }
+  50% { text-shadow:-15px -15px #5b0707; }
+  75% { text-shadow:15px -15px #5b0707; }
+  100% { text-shadow:15px 15px #5b0707; }
+}
+
+#page5 .back {
+  font-size:2vh;
+  letter-spacing:2vh;
+  line-height:50vh;
+  font-weight:300;
+  text-align:left;
+  font-family:"Truculenta", sans-serif;
+  background:radial-gradient(circle at 30% 50%, #f1a957 50%, #540410 40%);
+  color:rgb(0, 0, 0);
+  padding-left:2vh;
+}
+
+@media screen and (max-width: 800px) {
+  #page5 .back h6 {
+    display: none; /* Verstecke den Teil mit NIKA auf kleineren Bildschirmen */
+  }
+}
+
+#splashScreen {
+  position: absolute; /* Positioniert das Element relativ zum nächsten positionierten Element */
+  top:  0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+  text-align: center;
+  color: white;
+  font-weight: 100; /* Wieso wird das nicht applied? */
+  font-family: "Truculenta", sans-serif;
+  font-size: 3vh;
+  letter-spacing: 2.5vh;
+}
+@media screen and (max-width: 600px) {
+  #splashScreen {
+    display: none;
+  }
+}
+
+.splash-content {
+  position: relative;
+}
+
+.main-content {
+  position: absolute;
+  top: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, rgba(255,0,0,0), rgba(255,0,0,0));
+  transition: all 1.5s ease;
+}
+@media screen and (max-width: 600px) {
+  .main-content {
+    top: 0vh;
+  }
+}
+
+/* #continueButton {
+  width: 300px;
+  height: 50px;
+  background-color: #a04545;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+} */
+
+/* #continueButton:hover {
+  background-color: #b16969;
+} */
+
+#canvas1 {
+  border: 5px solid rgb(0, 0, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (max-width: 600px) {
+  #canvas1 {
+    display: none;
+  }
+}
+
+p {
+  font-size: 20px;
+  font-family: "Truculenta", sans-serif;
+  font-weight: 100;
+  color: #ffffff;
+  line-height: 1.3;
+  letter-spacing: 0.5vh;
+}
+
+#counter {
+  font-size: 20px;
+  font-family: "Truculenta", sans-serif;
+  font-weight: 900;
+  color: #cc80ec;
+  line-height: 1.3;
+  letter-spacing: 0.5vh;
+}

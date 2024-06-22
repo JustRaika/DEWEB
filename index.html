@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Breitedes Browsers (alles was man sieht) wird festgelegt und der Anfangszoom des Broesers auf 1.0 gesetzt -->
+  <title>The art of Nika</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,100..900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Idee des Bilderbuches: 2 Szenen überlegen. Ein Spieler, mit dem man was machen kann (steuern kann). 
+        Es können auch andere Figuren drin sein, die nachlaufen oder einfach im Hintergrund was machen und zur Geschichte etwas
+      beitragen. Und wenn der Charakter etwas macht (z.B ins Wasser springt, dann soll es einen Sound geben) -->
+
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-content">
+      <h1>The art of Nika</h1> 
+       <p>To uncover the content, please first collect <br> my shattered sanity from debugging this project</p>
+       <p>(use w,a,s,d)</p>
+       <div id="counter">Collected sanity: 0/27</div>
+      <!-- <button id="continueButton">Let's see what's hiding...</button> -->
+    </div>
+  </div>
+
+  <canvas id="canvas1"></canvas>
+ 
+  <div class="main-content" id="mainContent">
+    <div id="book">
+      <input type="checkbox" id="five">
+      <div id="page5" class="page">
+        <div class="front">A</div>
+        <div class="back"><h6>THE END</h6></div>
+        <label for="five"></label>
+      </div>
+
+      <input type="checkbox" id="four">
+      <div id="page4" class="page">
+        <div class="front">I</div>
+        <div class="back">K</div>
+        <label for="four"></label>
+      </div>
+
+      <input type="checkbox" id="three">
+      <div id="page3" class="page">
+        <div class="front">I</div>
+        <div class="back">N</div>
+        <label for="three"></label>
+      </div>
+
+      <input type="checkbox" id="two">
+      <div id="page2" class="page">
+        <div class="front">O</div>
+        <div class="back">M</div>
+        <label for="two"></label>
+      </div>
+
+      <input type="checkbox" id="one">
+      <div id="page1" class="page">
+        <div class="front">
+          <div class="nika"><h6>NIKA</h6></div>
+          <img id="desert" img src="./images/sand.png" alt="Wüstensand">
+          <img id="fox" img src="./images/foxy.gif" alt="Fuchs winkt">
+        </div>
+
+        <div class="back">D</div>
+        <label for="one"></label>
+      </div>
+    </div>
+
+  <audio id="backgroundMusic">
+      <source src="./audio/background.mp3" type="audio/mpeg">
+  </audio> 
+
+  <audio id="musicLevelup">
+    <source src="./audio/mc-levelup.mp3" type="audio/mpeg">
+  </audio> 
+
+    <!-- Das Stichwort "module" erlaubt uns mehrere JS-Files miteinander zu laden und sie je nachdem importieren.  -->
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
